@@ -1,0 +1,434 @@
+
+:root {
+    --primary-color: #ff5722; 
+    --secondary-color: #333;
+    --background-color: #f4f4f4;
+    --card-background: #ffffff;
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-heavy: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--secondary-color);
+    scroll-behavior: smooth;
+}
+
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 5%; 
+    background-color: var(--card-background);
+    box-shadow: var(--shadow-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 65px; 
+    height: 65px;
+    margin-right: 15px;
+}
+
+.logo h1 {
+    font-size: 2.2em; 
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav ul li a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    margin-left: 20px;
+    padding: 5px 10px;
+    transition: color 0.3s, border-bottom 0.3s;
+    font-weight: 600;
+}
+
+.main-nav ul li a:hover {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.hero-section {
+    background: url('images/hero-bg.jpg') no-repeat center center/cover;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    color: var(--card-background);
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    animation: fadeInDown 1s ease-out;
+}
+
+.hero-content h2 {
+    font-size: 3em;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content .tagline {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #ffc107;
+}
+.cta-button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.cta-button:hover {
+    background-color: #e64a19;
+    transform: translateY(-2px);
+}
+
+.menu-section {
+    padding: 50px 5%;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.2em;
+    color: var(--secondary-color);
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+.menu-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.item-card {
+    background-color: var(--card-background);
+    padding: 25px; 
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.item-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-heavy);
+}
+
+.food-img {
+    width: 100%;
+    height: 250px; 
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.item-card h3 {
+    font-size: 1.6em; 
+    margin-bottom: 8px;
+    color: var(--primary-color);
+}
+
+.price {
+    
+    font-size: 1.4em; 
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #4CAF50;
+}
+
+.add-to-cart-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #43a047;
+}
+
+.payment-section {
+    padding: 50px 5%;
+    text-align: center;
+    background-color: #fff;
+}
+
+.payment-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: var(--card-background);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+}
+
+.radio-group {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.radio-group label {
+    font-size: 1.1em;
+    cursor: pointer;
+    padding: 10px 15px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.radio-group input[type="radio"]:checked + label {
+    border-color: var(--primary-color);
+    background-color: #fff3e0;
+}
+
+.radio-group input {
+    display: none;
+}
+
+.main-footer {
+    background-color: var(--secondary-color);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+}
+
+
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 10001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding-top: 50px;
+}
+
+.modal-content {
+    background-color: var(--card-background);
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: var(--shadow-heavy);
+    animation: slideIn 0.4s ease-out;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+#cart-items {
+    list-style: none;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+#cart-items li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed #f0f0f0;
+}
+
+#cart-items li:last-child {
+    border-bottom: none;
+}
+
+.remove-btn {
+    background: #e57373;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8em;
+    transition: background 0.3s;
+}
+
+.remove-btn:hover {
+    background: #d32f2f;
+}
+
+.cart-summary h3 {
+    color: var(--primary-color);
+    font-size: 1.5em;
+}
+
+#checkoutBtn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.confirmation-message {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #e8f5e9; 
+    color: #2e7d32; 
+    border: 1px solid #a5d6a7;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    text-align: center;
+    animation: fadeIn 0.5s;
+}
+
+#toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 16px;
+    position: fixed;
+    z-index: 10002;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.5s, visibility 0s;
+}
+
+#toast.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+#toast.error {
+    background-color: #d32f2f;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        padding: 15px 3%; 
+    }
+
+    .logo-img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .main-nav ul {
+        margin-top: 10px;
+    }
+
+    .main-nav ul li a {
+        margin: 0 5px;
+        font-size: 0.9em;
+    }
+    
+    .hero-content h2 {
+        font-size: 2em;
+    }
+
+    .menu-container {
+       
+        grid-template-columns: 1fr;
+    }
+
+    .food-img {
+        height: 200px;
+    }
+}

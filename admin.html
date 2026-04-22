@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TummyTaxi | Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f4f7f6; margin: 0; display: flex; }
+        .sidebar { width: 250px; background: #333; color: white; height: 100vh; padding: 20px; }
+        .main-content { flex: 1; padding: 30px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
+        .card h2 { color: #ff4d4d; margin: 0; }
+        table { width: 100%; border-collapse: collapse; background: white; margin-top: 20px; }
+        th, td { padding: 12px; border-bottom: 1px solid #ddd; text-align: left; }
+        th { background: #ff4d4d; color: white; }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>TummyTaxi Admin</h2>
+    <p><i class="fas fa-tachometer-alt"></i> Dashboard</p>
+    <p><i class="fas fa-utensils"></i> Restaurants</p>
+    <p><i class="fas fa-shopping-basket"></i> Orders</p>
+</div>
+
+<div class="main-content">
+    <h1>Dashboard Overview</h1>
+    <div class="stats-grid">
+        <div class="card">
+            <h2 id="total-orders">0</h2>
+            <p>Total Orders</p>
+        </div>
+        <div class="card">
+            <h2 id="total-users">0</h2>
+            <p>Total Users</p>
+        </div>
+    </div>
+
+    <h3>Recent Orders</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Order #</th>
+                <th>Customer</th>
+                <th>Amount</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="order-table">
+            </tbody>
+    </table>
+</div>
+
+<script>
+    // Pointing to your specific Port 8080
+    const API_URL = 'http://localhost:8080/tummytaxi/backend/api/admin.php?action=stats';
+
+    async function loadDashboard() {
+        try {
+            const response = await fetch(API_URL);
+            const result = await response.json();
+
+            if (result.success) {
+                document.getElementById('total-orders').innerText = result.data.total_orders;
+                document.getElementById('total-users').innerText = result.data.total_users;
+
+                let tableHtml = '';
+                result.data.recent_orders.forEach(order => {
+                    tableHtml += `
+                        <tr>
+                            <td>${order.order_number}</td>
+                            <td>${order.customer_name}</td>
+                            <td>₹${order.total_amount}</td>
+                            <td>${order.status}</td>
+                        </tr>
+                    `;
+                });
+                document.getElementById('order-table').innerHTML = tableHtml;
+            }
+        } catch (error) {
+            console.error("Error loading admin data:", error);
+        }
+    }
+
+    // Load data when page opens
+    loadDashboard();
+</script>
+
+</body>
+</html>

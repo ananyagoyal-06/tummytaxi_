@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tummy Taxi - Order Food Online</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header class="main-header animated-header">
+    <div class="logo">
+      <img src="images/logo.png" alt="Tummy Taxi Logo" class="logo-img" />
+      <h1>Tummy Taxi</h1>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#payment">Payment</a></li>
+        <li><a href="#" id="viewCartBtn"><i class="fas fa-shopping-cart"></i> Cart (<span id="cart-count">0</span>)</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="hero" class="hero-section">
+    <div class="hero-content">
+      <p class="tagline">Fast, Fresh, and Flavorful!</p>
+      <h2>Delicious food delivered at your doorstep <i class="fas fa-burger"></i></h2>
+      <button id="orderBtn" class="cta-button">Order Now <i class="fas fa-arrow-right"></i></button>
+    </div>
+  </section>
+
+  <section id="menu" class="menu-section">
+    <h2 class="section-title">Our Popular Dishes ✨</h2>
+    <div class="menu-container">
+      <div class="food-item item-card">
+        <img src="images/pizza.png" alt="Pizza" class="food-img">
+        <h3>Cheesy Pizza</h3>
+        <p class="price">₹249</p>
+        <button class="add-to-cart-btn" data-name="Cheesy Pizza" data-price="249">Add to Cart</button>
+      </div>
+
+      <div class="food-item item-card">
+        <img src="images/burger.png" alt="Burger" class="food-img">
+        <h3>Loaded Burger</h3>
+        <p class="price">₹199</p>
+        <button class="add-to-cart-btn" data-name="Loaded Burger" data-price="199">Add to Cart</button>
+      </div>
+
+      <div class="food-item item-card">
+        <img src="images/pasta.png" alt="Pasta" class="food-img">
+        <h3>White Sauce Pasta</h3>
+        <p class="price">₹179</p>
+        <button class="add-to-cart-btn" data-name="White Sauce Pasta" data-price="179">Add to Cart</button>
+      </div>
+      </div>
+  </section>
+
+  <section id="payment" class="payment-section">
+    <h2 class="section-title">Select Payment Method 💳</h2>
+    <form onsubmit="makePayment(event)" class="payment-form">
+      <div class="radio-group">
+        <label><input type="radio" name="payment" value="UPI" required> <i class="fas fa-mobile-alt"></i> UPI</label>
+        <label><input type="radio" name="payment" value="Credit/Debit Card" required> <i class="fas fa-credit-card"></i> Credit/Debit Card</label>
+        <label><input type="radio" name="payment" value="Cash on Delivery" required> <i class="fas fa-hand-holding-dollar"></i> Cash on Delivery</label>
+      </div>
+      <button type="submit" class="cta-button">Confirm Payment</button>
+    </form>
+    <div id="confirmationMessage" class="confirmation-message" style="display:none;"></div>
+  </section>
+
+  <div id="cartModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeCartBtn">&times;</span>
+      <h2>Your Cart <i class="fas fa-shopping-basket"></i></h2>
+      <ul id="cart-items">
+        </ul>
+      <div class="cart-summary">
+        <h3>Total: ₹<span id="total">0</span></h3>
+        <button id="checkoutBtn" class="cta-button" disabled>Proceed to Payment</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="main-footer">
+    <p>© 2025 Tummy Taxi | Made with <i class="fas fa-heart"></i> for food lovers</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
